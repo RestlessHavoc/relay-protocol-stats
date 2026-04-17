@@ -8,7 +8,8 @@
     "dev:all": "concurrently -n frontend,api,cron -c blue,green,magenta \"pnpm run dev\" \"pnpm --filter ./leaderboard-api run dev\" \"pnpm --filter ./leaderboard-api run cron:dev\"",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "pnpm run build && wrangler dev",
+    "deploy": "pnpm run build && wrangler deploy"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
@@ -22,6 +23,7 @@
     "viem": "^2.44.4"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.32.3",
     "@eslint/js": "^9.39.1",
     "@types/node": "^24.10.1",
     "@types/react": "^19.2.5",
@@ -41,7 +43,8 @@
     "tailwindcss-animate": "^1.0.7",
     "typescript": "~5.9.3",
     "typescript-eslint": "^8.46.4",
-    "vite": "^7.2.4"
+    "vite": "^7.2.4",
+    "wrangler": "^4.83.0"
   },
   "packageManager": "pnpm@10.20.0+sha512.cf9998222162dd85864d0a8102e7892e7ba4ceadebbf5a31f9c2fce48dfce317a9c53b9f6464d1ef9042cba2e02ae02a9f7c143a2b438cd93c91840f0192b9dd"
 }
